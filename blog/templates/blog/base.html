@@ -16,11 +16,11 @@
 <!-- Roboto fonts from google  -->
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <!-- Stylesheet link  -->
-<link href="/static/styles.css" rel="stylesheet"/>
+<link href="blog/static/styles.css" rel="stylesheet"/>
 
 <!-- Jquery and scripts link  -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="/static/scripts.js"></script>
+<script src="blog/static/scripts.js"></script>
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -45,7 +45,7 @@
 
 <!-- Navbar elements -->
 <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light border">
-    <a class="navbar-brand" href="/"><img id="logo" height="50" width="150" src="/static/logo.png"></a>
+    <a class="navbar-brand" href="/"><img id="logo" height="50" width="150" src="blog/static/logo.png"></a>
         <!-- Navbar elements changer with session -->
         {% if request.user.is_superuser %}
         <ul class="navbar-nav mr-auto mt-2"></ul>
