@@ -68,8 +68,6 @@ def edit(request, Blogpost_id):
 
         return render(request, "blog/edit.html", context)
 
-
-
 @login_required
 def logout(request):
 
