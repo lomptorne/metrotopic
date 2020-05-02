@@ -1,0 +1,38 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+  {{Blogpost.title}}
+{% endblock %}
+
+{% block main %}
+<!-- Post Header -->
+<div class="container-fluid" id="titlea">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="post-heading">
+        <div id="blockhead">
+          <h1>{{ Blogpost.title }}</h1>
+          <span class="meta">Posted by {{ Blogpost.author }} on {{ Blogpost.date_posted.strftime }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="new2">
+
+<!-- Post Content -->
+<article>
+  <div class="container" id="articlec">
+    <div class="row">
+      <div class="col-xl-10 col-lg-10 mx-auto" id="contente"> {{ Blogpost.content|safe  }} </div>
+    </div>
+  </div>
+</article>
+
+<!-- Scrollbar Script -->
+<script>
+document.getElementById("scrolline").innerHTML = "<div class=\"scroll-line\"></div>";
+</script>
+
+{% endblock %}

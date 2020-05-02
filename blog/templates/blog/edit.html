@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block main %}
+<hr class="new">
+
+<!-- Edit form-->
+<form method="post" id="postForm">
+    {% csrf_token %}
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="title" placeholder="Title" type="text" value="{{ Blogpost.title }}" required/>
+        <input class="form-control" name="subtitle" placeholder="Subtitle" type="text" autocomplete="off" value="{{ Blogpost.subtitle }}" required/>
+        <input class="form-control" autocomplete="off" name="author" placeholder="Author" type="text" value="{{ Blogpost.author }}" required/>
+    </div>
+    <div class="form-group">
+        <textarea id="contentArea" class="form-control" name="content" placeholder="Content" type="text" required form="postForm">{{ Blogpost.content }}</textarea>
+    </div>
+    <button class="btn btn-primary" type="submit" id="submitbutton">Post</button>
+</form>
+{% endblock %}

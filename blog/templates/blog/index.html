@@ -1,0 +1,49 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+
+{% if messages %}
+  {% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+{% endif %}
+
+<!-- Loop to colect the post stocked on the database -->
+{% for Blogpost in Blogposts %}
+<!-- Article tile -->
+<article id="tileprev">
+
+  <!-- Edit and Delete button if the session is on -->
+  {% if request.user.is_superuser %}
+  <form action="{% url 'delete' Blogpost.id %}" id="deleteForm" onsubmit="return confirm('Do you really want to delete this post');">
+    <button class="btn btn-danger" id="delete" type="submit">Delete</button>
+  </form>
+  <form action="{% url 'edit' Blogpost.id %}" id="editForm">
+    <button type="submit" class="btn btn-warning">Edit</button>
+  </form>
+  {% endif %}
+
+  <!-- Title and abstract of the article  -->
+  <h3 _ngcontent-c1="" data-articleid="19"><a _ngcontent-c1="" class="titletext"></a>{{ Blogpost.title }}</h3>
+  <hr class="new2">
+  <div _ngcontent-c1="" class="module js" data-articleindexbody="19"><p class="cont">{{ Blogpost.subtitle }}</p></div>
+  <hr class="new2">
+  <footer _ngcontent-c1=""><span class="date"> {{ Blogpost.date_posted.strftime}} <div _ngcontent-c1="" class="articleTags">By, {{ Blogpost.author }}</div>
+  <a href="{% url 'post' Blogpost.id %}">
+  <button  id="read" class="btn btn-primary">Read <i class="fas fa-arrow-right"></i></button>
+  </a>
+
+  </footer>
+</article>
+{% endfor %}
+
+{% endblock %}

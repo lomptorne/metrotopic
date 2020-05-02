@@ -1,0 +1,193 @@
+body
+{
+  padding-top: 15vh;
+}
+
+nav .navbar-brand
+{
+font-size: xx-large
+}
+
+main .form-control
+{
+display: inline-block;
+width: auto;
+}
+
+main
+{
+text-align: center;
+overflow-x: auto;
+}
+
+main img
+{
+max-width: 100%;
+}
+
+hr.new2 
+{
+border: 0;
+height: 1px;
+background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+hr.new
+{
+border:none;
+
+height: 1px;
+}
+
+hr.new3
+{
+border:none;
+padding: 2.5em;
+}
+
+#read 
+{
+float: right;
+box-shadow:inset 0px -1px 7px 0px #0780b8;
+background-color:#1375ad;
+display:inline-block;
+cursor:pointer;
+color:#ffffff;
+
+font-size:15px;
+padding:9px 23px;
+text-decoration:none;
+text-shadow:0px 1px 0px #263666;
+border-radius: 0px !important;
+
+}
+
+#read:hover 
+{
+background-color:#3689d1;
+}
+
+#read:active 
+{
+position:relative;
+top:0.063em;
+}
+
+#delete
+{
+float: right;
+}
+
+main::-webkit-scrollbar 
+{
+display: none;
+}
+
+main 
+{
+-ms-overflow-style: none;
+}
+
+#articlec
+{
+text-align: justify;
+font-family: roboto;
+width: 100%;
+}
+
+#contente
+{
+text-align: justify;
+font-family: roboto !important;
+}
+
+body
+{
+background-color: #E9EBEE;
+}    
+
+#scrolline
+{
+position: absolute;
+bottom: 0;
+left: 0;
+z-index: 1;
+width: 100%;
+background: #fff;
+border-bottom: 1px solid #ccc;
+}
+
+#scrolline-proper
+{
+width: 80%;
+margin: 0 auto;
+}
+
+.scroll-line
+{
+height: 2px;
+margin-bottom: -2px;
+background: blue;
+width: 0%;
+}
+
+#editForm
+{
+float: left;
+}
+
+#tileprev
+{
+border-left: 2px solid var(--dark);
+padding: 20px 20px;
+margin-bottom : 1.5em !important;
+position: relative;
+overflow: hidden;
+max-width: 700px;
+margin: 0 auto;
+transition: -webkit-transform 0.2s ease-in-out;
+transition: transform 0.2s ease-in-out;
+transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+-webkit-transform: translate(0px, 20px) translate3d(0,0,0);
+transform: translate(0px, 20px) translate3d(0,0,0);
+border-color: transparent;
+background: #fff;
+box-shadow: 0px 3px 14px -8px #000;
+}
+
+.module 
+{
+width: 100;
+overflow: hidden;
+}
+
+.module p
+{
+  margin: 0;
+}
+
+.cont 
+{
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;  
+}
+
+#contentArea 
+{
+width: 100%;
+min-height: 20em;
+outline: none;
+resize: none;
+}
+
+#submitbutton
+{
+margin-bottom: 1em;
+width: 25em;
+}
+
+.container-fluid
+{
+  overflow: hidden !important;
+}
