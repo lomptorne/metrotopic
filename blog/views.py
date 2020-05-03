@@ -49,7 +49,7 @@ def edit(request, Blogpost_id):
             blogpost.subtitle= request.POST.get('subtitle')
             blogpost.author= request.POST.get('author')
             blogpost.content= request.POST.get('content')
-            blogpost.date_posted= datetime.datetime.now()
+            blogpost.img= request.POST.get('img')
             blogpost.save()
 
             messages.success(request, 'Post edited')
@@ -87,6 +87,7 @@ def add(request):
             blogpost.subtitle= request.POST.get('subtitle')
             blogpost.author= request.POST.get('author')
             blogpost.content= request.POST.get('content')
+            blogpost.img= request.POST.get('img')
             blogpost.date_posted= datetime.datetime.now()
             blogpost.save()
 

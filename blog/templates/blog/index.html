@@ -18,32 +18,48 @@ Index
 {% endif %}
 
 <!-- Loop to colect the post stocked on the database -->
+<div class="flex-container">
 {% for Blogpost in Blogposts %}
 <!-- Article tile -->
-<article id="tileprev">
+
 
   <!-- Edit and Delete button if the session is on -->
-  {% if request.user.is_superuser %}
-  <form action="{% url 'delete' Blogpost.id %}" id="deleteForm" onsubmit="return confirm('Do you really want to delete this post');">
-    <button class="btn btn-danger" id="delete" type="submit">Delete</button>
-  </form>
-  <form action="{% url 'edit' Blogpost.id %}" id="editForm">
-    <button type="submit" class="btn btn-warning">Edit</button>
-  </form>
-  {% endif %}
 
+<div id="tileprev" class="box">
+
+{% if request.user.is_superuser %}
+<form  class="controls"  action="{% url 'delete' Blogpost.id %}" id="deleteForm" onsubmit="return confirm('Do you really want to delete this post');">
+  <button type="submit" class="close" aria-label="Close">
+    <svg class="bi bi-x-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
+    <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+    <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+    </svg>
+  </button>
+</form>
+<form class="controls" style="right: 3em" action="{% url 'edit' Blogpost.id %}" id="editForm">
+  <button type="submit" class="close" aria-label="Close">
+    <svg class="bi bi-gear" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 014.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 01-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 011.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 012.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 012.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 011.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 01-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 018.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 001.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 00.52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 00-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 00-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 00-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 00-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 00.52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 001.255-.52l.094-.319z" clip-rule="evenodd"/>
+    <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 100 4.492 2.246 2.246 0 000-4.492zM4.754 8a3.246 3.246 0 116.492 0 3.246 3.246 0 01-6.492 0z" clip-rule="evenodd"/>
+    </svg>
+  </button>
+</form>
+{% endif %}
+
+  <img id="imgtile" src="{{ Blogpost.img }}"" alt="ArtilePreview">
   <!-- Title and abstract of the article  -->
-  <h3 _ngcontent-c1="" data-articleid="19"><a _ngcontent-c1="" class="titletext"></a>{{ Blogpost.title }}</h3>
-  <hr class="new2">
-  <div _ngcontent-c1="" class="module js" data-articleindexbody="19"><p class="cont">{{ Blogpost.subtitle }}</p></div>
-  <hr class="new2">
-  <footer _ngcontent-c1=""><span class="date"> {{ Blogpost.date_posted.strftime}} <div _ngcontent-c1="" class="articleTags">By, {{ Blogpost.author }}</div>
+  <div class="col" id="tilecontent">
+  {{ Blogpost.title }}
+  </div>
+
   <a href="{% url 'post' Blogpost.id %}">
   <button  id="read" class="btn btn-primary">Read <i class="fas fa-arrow-right"></i></button>
   </a>
 
-  </footer>
-</article>
-{% endfor %}
+  </div>
 
+
+{% endfor %}
+</div>
 {% endblock %}

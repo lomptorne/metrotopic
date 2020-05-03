@@ -8,4 +8,5 @@ class Blogpost(models.Model):
     subtitle = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     date_posted = models.DateTimeField('date published')
+    img = models.CharField(max_length=200)
     content =models.TextField()
