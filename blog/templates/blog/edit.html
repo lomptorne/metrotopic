@@ -1,24 +1,32 @@
 {% extends "blog/base.html" %}
 
 {% block title %}
-    Edit
+Edit
 {% endblock %}
 
-{% block main %}
-<hr class="new">
 
-<!-- Edit form-->
-<form method="post" id="postForm">
-    {% csrf_token %}
-    <div class="form-group">
-        <input autocomplete="off" autofocus class="form-control" name="title" placeholder="Title" type="text" value="{{ Blogpost.title }}" required/>
-        <input class="form-control" name="subtitle" placeholder="Subtitle" type="text" autocomplete="off" value="{{ Blogpost.subtitle }}" required/>
-        <input class="form-control" autocomplete="off" name="author" placeholder="Author" type="text" value="{{ Blogpost.author }}" required/>
-        <input class="form-control" autocomplete="off" name="img"  type="text" value="{{ Blogpost.img }}" required/>
-    </div>
-    <div class="form-group">
-        <textarea id="contentArea" class="form-control" name="content" placeholder="Content" type="text" required form="postForm">{{ Blogpost.content }}</textarea>
-    </div>
-    <button class="btn btn-primary" type="submit" id="submitbutton">Post</button>
+{% block main %}
+
+<!-- Post Form -->
+<form action="{% url 'add' %}" method="post" id="postForm">
+{% csrf_token %}
+
+<div class="form-group">
+<div class="flex-container">
+
+  <div id="editordiv">
+  <input autocomplete="off" autofocus class="form-control" name="title" placeholder="Title" type="text" value="{{Blogpost.title}}"  required/>
+  <textarea id="editor" name="content" type="text" autocomplete="off">{{Blogpost.content}}</textarea>
+  </div>
+
+  <div id="formdiv">
+  <input class="form-control" name="subtitle" placeholder="Subtitle" type="text" autocomplete="off" value="{{Blogpost.subtitle}}" required/>
+  <input class="form-control" name="author" placeholder="Author" type="text" autocomplete="off" value="{{Blogpost.author}}" required/>
+  <input class="form-control" name="img" placeholder="Preview Image" type="text" autocomplete="off" value="{{Blogpost.img}}"/>
+  <button class="btn btn-primary" type="subtmit" id="postbutton">Post</button>
+  </div>
+
+</div>
 </form>
+
 {% endblock %}

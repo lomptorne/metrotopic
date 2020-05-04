@@ -40,7 +40,17 @@ document.getElementById("mainbloc").style.overflowAnchor= "none"
 }
 }
 
+// If smallscreen
 if (window.innerWidth < 1000) {
   document.getElementById("articlec").style.width = "95%"
 }
+
+tinymce.init({
+  selector: '#editor',
+  toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment',
+  height : "480",
+  resize: false
+});
+
+
 });
