@@ -8,7 +8,7 @@ Edit
 {% block main %}
 
 <!-- Post Form -->
-<form action="{% url 'add' %}" method="post" id="postForm">
+<form action="{% url 'edit' Blogpost.id %}" method="post" id="postForm">
 {% csrf_token %}
 
 <div class="form-group">

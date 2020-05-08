@@ -4,7 +4,6 @@
 Add
 {% endblock %}
 
-
 {% block main %}
 
 <!-- Post Form -->
@@ -14,17 +13,17 @@ Add
 <div class="form-group">
 <div class="flex-container">
 
-  <div id="editordiv">
+  <div id="editordiv" class="box">
   <input autocomplete="off" autofocus class="form-control" name="title" placeholder="Title" type="text"  required/>
   <textarea id="editor" name="content" type="text" autocomplete="off"></textarea>
   </div>
 
-  <div id="formdiv">
+  <div id="formdiv" class="box">
   <input class="form-control" name="subtitle" placeholder="Subtitle" type="text" autocomplete="off" required/>
   <input class="form-control" name="author" placeholder="Author" type="text" autocomplete="off" required/>
   <input class="form-control" name="img" placeholder="Preview Image" type="text" autocomplete="off" value="/static/tile.jpg"/>
-  <button class="btn btn-primary" type="subtmit" id="postbutton">Post</button>
-  </div>
+  <button class="btn btn-primary" type="submit" id="postbutton">Post</button>
+</div>
 
 </div>
 </form>

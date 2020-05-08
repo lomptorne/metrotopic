@@ -13,3 +13,4 @@ class Blogpost(models.Model):
 
     def get_absolute_url(self):
         return '/'+str(self.id)
+

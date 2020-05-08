@@ -58,7 +58,7 @@ def edit(request, Blogpost_id):
     else :
 
         try:
-            post = Blogpost.objects.get(pk=Blogpost_id)
+            Blogpost.objects.get(pk=Blogpost_id)
         except Blogpost.DoesNotExist:
             raise Http404("This post does not exist")
 

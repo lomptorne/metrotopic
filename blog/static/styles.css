@@ -188,14 +188,10 @@ border-bottom: 0rem;
 {
 padding: 2rem 2rem 0rem 2rem;
 border-bottom: 0rem;
+text-align: center;
 }
 
 .form-control
 {
 margin-bottom: 1rem;
-}
-
-#postbutton
-{
-width: 100%;
 }

@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
 
-    //Scrollbar function
+//Scrollbar function
 $(window).scroll(function(){
   var wintop = $(window).scrollTop(), docheight =
 
@@ -13,7 +13,7 @@ $(window).scroll(function(){
 window.onscroll = function() {scrollFunction()};
 
 
-
+// Post page modulation function
 if (window.innerWidth > 1000) {
 function scrollFunction() {
 
@@ -22,7 +22,7 @@ document.getElementById("mainbloc").style.overflowAnchor= "none"
   if (document.body.scrollTop > 95 || document.documentElement.scrollTop > 95) {
     $("#titlea").fadeIn(500);
     $("#titleb").fadeOut(0);$
-    document.getElementById("articlec").style.marginLeft = "27%"
+    document.getElementById("articlec").style.marginLeft = "28%"
 
 
   }
@@ -45,12 +45,15 @@ if (window.innerWidth < 1000) {
   document.getElementById("articlec").style.width = "95%"
 }
 
+// Rich text editor for the add page 
 tinymce.init({
   selector: '#editor',
-  toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment',
+  toolbar: 'undo redo | bold italic underline | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | image | restoredraft ',
   height : "480",
-  resize: false
+  resize: false,
+  plugins: "image imagetools autosave"
 });
+
 
 
 });
