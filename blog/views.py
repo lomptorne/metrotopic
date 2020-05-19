@@ -102,3 +102,8 @@ def add(request):
 
 
         return render(request, "blog/add.html")
+
+def contact(request):
+
+
+    return render(request, "blog/contact.html")

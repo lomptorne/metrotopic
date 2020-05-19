@@ -15,6 +15,7 @@ urlpatterns = [
     path("delete/<int:Blogpost_id>", views.delete, name="delete"),
     path('logout', views.logout, name="logout"),
     path('add', views.add, name="add"),
+    path('contact', views.contact, name="contact"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
 ]

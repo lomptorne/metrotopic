@@ -93,9 +93,12 @@ border-color: transparent;
 background-color: rgb(248, 249, 250, 0.5);
 border-radius: 2px;
 color: #141823;
-box-shadow: 0px 3px 14px -8px #000;
 display: flex;
 flex-shrink: 1;
+-moz-box-shadow: 3px 3px 5px 6px #ccc;
+-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+box-shadow: 3px 3px 5px 6px #ccc;
+
 }
 
 #contentArea
@@ -195,3 +198,50 @@ text-align: center;
 {
 margin-bottom: 1rem;
 }
+
+#contactblock
+{
+position: absolute;
+left: 50%;
+top: 50%;
+width: calc(75vh - 22px);
+height: calc(50vh - 16px);
+max-width: 90%;
+background-color: rgb(248, 249, 250, 0.5);
+-moz-box-shadow: 3px 3px 5px 6px #ccc;
+-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+box-shadow: 3px 3px 5px 6px #ccc;
+transform: translate(-50%, -50%);
+text-align: center;
+
+}
+
+.insidecontact
+{
+font-size: calc(22px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+position: absolute;
+bottom: 0;
+}
+
+#contacttext
+{
+font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+font-style: oblique;
+margin: 0 1vh auto 1vh;
+}
+
+#contacttitle
+{
+text-align: center;
+margin-top: 1vh; 
+font-size: calc(20px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+#contactname
+{
+text-align: right !important;
+font-style: italic;
+margin-left: 60%;
+font-size: calc(12px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
