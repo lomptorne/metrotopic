@@ -8,7 +8,7 @@ hr.new2
 border: 0;
 height: 1px;
 max-width: 100%;
-background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 body
@@ -17,6 +17,10 @@ background-color: #E9EBEE;
 max-width: 100%;
 overflow-x: hidden;
 padding-top: 65px;
+background-image:linear-gradient(transparent, #E9EBEE 25%), url("/static/bg.png");
+background-repeat: no-repeat;
+background-size: calc(75vh - 22px);
+background-position: -10px 0px ;
 }
 
 #read
@@ -90,7 +94,7 @@ position: relative;
 width: 20rem;
 height: 20rem;
 border-color: transparent;
-background-color: rgb(248, 249, 250, 0.5);
+background-color: rgb(248, 249, 250, 0.85);
 border-radius: 2px;
 color: #141823;
 display: flex;
@@ -245,3 +249,7 @@ margin-left: 60%;
 font-size: calc(12px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
+#flow
+{
+overflow-x: hidden;
+}

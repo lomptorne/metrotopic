@@ -46,7 +46,7 @@
 </head>
 
 <body>
-
+<div id="flow">
 <!-- Navbar elements -->
 <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light border" id="nav">
     <a class="navbar-brand" href="/"><div id="logodiv"><img id="logo" height="50" width="150" src="/static/logo.png"></div></a>
@@ -69,14 +69,8 @@
 </nav>
 
 <!-- Main content of pages -->
-
-
-        {% block main %}{% endblock %}
-
-
-
-
+{% block main %}{% endblock %}
 
 </body>
-
+</div>
 </html>
