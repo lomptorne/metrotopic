@@ -17,10 +17,6 @@ background-color: #E9EBEE;
 max-width: 100%;
 overflow-x: hidden;
 padding-top: 65px;
-background-image:linear-gradient(transparent, #E9EBEE 25%), url("/static/bg.png");
-background-repeat: no-repeat;
-background-size: calc(75vh - 22px);
-background-position: -10px 0px ;
 }
 
 #read
