@@ -36,7 +36,7 @@ font-size:15px;
 padding:9px 23px;
 text-decoration:none;
 text-shadow:0px 1px 0px #263666;
-border-radius: 0px !important;
+border-radius: 10px !important;
 }
 
 #read:hover
@@ -93,6 +93,7 @@ margin : 2em;
 position: relative;
 width: 20rem;
 height: 20rem;
+border-radius: 10px !important;
 border-color: transparent;
 background-color: rgb(248, 249, 250, 0.85);
 border-radius: 2px;
@@ -113,12 +114,6 @@ outline: none;
 resize: none;
 }
 
-#submitbutton
-{
-margin-bottom: 1em;
-width: 25em;
-}
-
 #logo
 {
 max-width: height:100%;
@@ -128,7 +123,7 @@ max-height: : 100%;
 #titlea
 {
 float: left;
-padding-top: 6rem;
+padding-top: 100px !important;
 width: 25%;
 display: none;
 text-align: center;
@@ -137,6 +132,7 @@ text-align: center;
 #titleb
 {
 padding-top : 1rem;
+padding-top: 50px;
 width: 100%;
 text-align: center;
 }
@@ -171,6 +167,8 @@ position: absolute;
 top: 0;
 left: 0;
 width: 100%;
+border-top-left-radius: 10px !important;
+border-top-right-radius: 10px !important;
 height: 50%;
 -webkit-box-shadow:0px 1px 1px #1d37de;
 -moz-box-shadow:0px 1px 1px #1d37de;
@@ -211,12 +209,13 @@ top: 50%;
 width: calc(75vh - 22px);
 height: calc(50vh - 16px);
 max-width: 90%;
-background-color: rgb(248, 249, 250, 0.5);
+background-color: rgb(248, 249, 250, 1);
 -moz-box-shadow: 3px 3px 5px 6px #ccc;
 -webkit-box-shadow: 3px 3px 5px 6px #ccc;
 box-shadow: 3px 3px 5px 6px #ccc;
 transform: translate(-50%, -50%);
 text-align: center;
+border-radius: 10px;
 
 }
 
