@@ -25,6 +25,8 @@
 <!-- Jquery and scripts link  -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="/static/scripts.js"></script>
+<script src="/static/anime.min.js"></script>
+<script src="/static/animations.js"></script>
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -58,8 +60,17 @@
             <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
         </ul>
     {% else %}
+
     <ul class="navbar-nav ml-auto mt-2">
+        <li class="nav-item"><button class="btn btn-light" id="navBtn" onclick="caca()">
+        <svg class="bi bi-arrow-bar-left" width="25" height="25" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M5.854 4.646a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L3.207 8l2.647-2.646a.5.5 0 0 0 0-.708z"/>
+        <path fill-rule="evenodd" d="M10 8a.5.5 0 0 0-.5-.5H3a.5.5 0 0 0 0 1h6.5A.5.5 0 0 0 10 8zm2.5 6a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 1 0v11a.5.5 0 0 1-.5.5z"/>
+        </svg>
+        </button></li>
+        <div id="navTools">
         <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        </div>
     </ul>
     {% endif %}
 

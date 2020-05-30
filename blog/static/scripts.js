@@ -1,3 +1,38 @@
+
+function caca()
+{
+
+navTools = document.getElementById("navTools")
+navTools.style.visibility = 'visible'
+
+var tl = anime.timeline({
+  
+});
+
+tl
+.add({
+  targets: '#navBtn',
+  translateX: -navTools.offsetWidth - 10 ,
+  rotate: 180,
+  visibility: 'hidden',
+  easing: 'easeInOutExpo'
+
+})
+.add({
+  
+  targets: '#navTools',
+  opacity: 1,
+  easing: 'easeInOutExpo'
+
+});
+
+
+}
+
+
+
+
+
 window.addEventListener("DOMContentLoaded", () => {
 
 //Scrollbar function
@@ -11,6 +46,8 @@ $(window).scroll(function()
   $('.scroll-line').css('width', (scrolled + '%'));
 }
 );
+
+
 
 // load only on article page 
 var elementExists = document.getElementById("articlec");
