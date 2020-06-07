@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+  {{Blogpost.title}} : Sources
+{% endblock %}
+
+{% block main %}
+
+<div class="flex-container" id="sourcesblock">
+    <h5>Sources :</h5>
+    <div class="col" id="sourceForm">
+    
+    <ul class="fa-ul">
+    {% for source in Sources %}
+    <li><i class="fa fa-angle-right"></i><a href="{{ source.link }}" target="_blank"> {{ source.title }} </a>
+      {% if request.user.is_superuser %}
+      <a id="deleteSource" href = "{% url 'deleteSource' Blogpost.id source.id %}"><i class="far fa-minus-square"></i></a>
+      {% endif %}
+    </li>
+
+    {% endfor %}
+    </ul>
+</div>
+
+<div class="col">
+  {% if request.user.is_superuser %}
+  <form action="{% url 'sources' Blogpost.id %}" method="post" id="postForm">
+  {% csrf_token %}
+  
+    <h6>Add a source</h6>
+      <input type="text" name="sourceTitle" autocomplete="off" placeholder="Name" required></input>
+      <input type="text" name="sourceLink" autocomplete="off" placeholder="Link" required></input>
+      <button type="submit">+</button>
+  </form>
+  
+  {% endif %}
+</div>
+
+</div>
+
+
+{% endblock %}

@@ -1,3 +1,12 @@
+/* Global */
+body
+{
+background-color: #E9EBEE;
+max-width: 100%;
+overflow-x: hidden;
+padding-top: 65px;
+}
+
 nav .navbar-brand
 {
 font-size: xx-large
@@ -11,14 +20,29 @@ max-width: 100%;
 background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
-body
+#flow
 {
-background-color: #E9EBEE;
-max-width: 100%;
 overflow-x: hidden;
-padding-top: 65px;
 }
 
+.flex-container 
+{
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+align-items:stretch;
+justify-content: center;
+overflow-y: hidden;
+}
+
+#logo
+{
+max-width: height:100%;
+max-height: : 100%;
+}
+
+
+/* Index */
 #read
 {
 position: absolute;
@@ -34,52 +58,14 @@ text-decoration:none;
 text-shadow:0px 1px 0px #263666;
 border-radius: 10px !important;
 }
-
 #read:hover
 {
 background-color:#3689d1;
 }
-
 #read:active
 {
 border: 1px black solid;
 color: grey;
-}
-
-#articlec
-{
-text-align: justify;
-font-family: roboto;
-max-width: 100%;
-width: 70%;
-padding: 2rem;
-background-color: rgb(248, 249, 250, 0.5);
-border-radius: 2px;
-color: #141823;
-}
-
-#scrolline
-{
-position: absolute;
-bottom: 0;
-left: 0;
-z-index: 1;
-width: 100%;
-background: #fff;
-border-bottom: 1px solid #ccc;
-}
-
-.scroll-line
-{
-height: 2px;
-margin-bottom: -2px;
-background: blue;
-width: 0%;
-}
-
-#editForm
-{
-padding-right:  2.5vw;
 }
 
 #tileprev
@@ -99,49 +85,7 @@ flex-shrink: 1;
 -moz-box-shadow: 3px 3px 5px 6px #ccc;
 -webkit-box-shadow: 3px 3px 5px 6px #ccc;
 box-shadow: 3px 3px 5px 6px #ccc;
-
 }
-
-#contentArea
-{
-width: 100%;
-min-height: 20em;
-outline: none;
-resize: none;
-}
-
-#logo
-{
-max-width: height:100%;
-max-height: : 100%;
-}
-
-#titlea
-{
-float: left;
-padding-top: 100px !important;
-width: 25%;
-display: none;
-text-align: center;
-}
-
-#titleb
-{
-padding-top : 1rem;
-padding-top: 50px;
-width: 100%;
-text-align: center;
-}
-
-.flex-container {
-display: flex;
-flex-wrap: wrap;
-flex-direction: row;
-align-items:stretch;
-justify-content: center;
-overflow-y: hidden;
-}
-
 #tilecontent
 {
 position: absolute;
@@ -179,6 +123,79 @@ padding: 0 !important;
 z-index:99;
 }
 
+.close
+{
+cursor:pointer;
+outline: none !important;
+}
+
+#editForm
+{
+padding-right:  2.5vw;
+}
+
+
+/* Post */
+#articlec
+{
+text-align: justify;
+font-family: roboto;
+max-width: 100%;
+width: 70%;
+padding: 2rem;
+background-color: rgb(248, 249, 250, 1);
+border-radius: 2px;
+color: #141823;
+}
+
+#scrolline
+{
+position: absolute;
+bottom: 0;
+left: 0;
+z-index: 1;
+width: 100%;
+background: #fff;
+border-bottom: 1px solid #ccc;
+}
+.scroll-line
+{
+height: 2px;
+margin-bottom: -2px;
+background: blue;
+width: 0%;
+}
+
+#titlea
+{
+position: fixed;
+padding-top: 50px ;
+padding-bottom: 50px ;
+width: 25%;
+height: 100%;
+display: none;
+text-align: center;
+overflow-y: scroll;
+margin: 1vh;
+}
+#titlea::-webkit-scrollbar {
+display: none;
+}
+#titleb
+{
+padding-top : 1rem;
+padding-top: 50px;
+width: 100%;
+text-align: center;
+}
+
+#sources
+{
+    text-align: left;
+}
+
+
+/* Add/Edit */
 #editordiv
 {
 padding: 2rem 2rem 0rem 2rem;
@@ -191,12 +208,13 @@ padding: 2rem 2rem 0rem 2rem;
 border-bottom: 0rem;
 text-align: center;
 }
-
 .form-control
 {
 margin-bottom: 1rem;
 }
 
+
+/* Contact*/
 #contactblock
 {
 position: absolute;
@@ -212,7 +230,6 @@ box-shadow: 3px 3px 5px 6px #ccc;
 transform: translate(-50%, -50%);
 text-align: center;
 border-radius: 10px;
-
 }
 
 .insidecontact
@@ -244,28 +261,42 @@ margin-left: 60%;
 font-size: calc(12px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
-#flow
+
+/* Sources */
+#sourcesblock
 {
-overflow-x: hidden;
+position: absolute;
+left: 50%;
+top: 50%;
+width: calc(150vh - 22px);
+height: calc(60vh - 16px);
+max-width: 90%;
+background-color: rgb(248, 249, 250, 1);
+-moz-box-shadow: 3px 3px 5px 6px #ccc;
+-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+box-shadow: 3px 3px 5px 6px #ccc;
+transform: translate(-50%, -50%);
+text-align: center;
+border-radius: 10px;
+padding: 2vh;
+}
+#sourceForm
+{
+text-align: left;
+overflow-y: scroll;
+max-height: 100%;
+}
+#sourceForm::-webkit-scrollbar {
+display: none;
 }
 
-#navBtn
+#deleteSource
 {
-border: none;
-background: none;
 position: absolute;
 right: 0;
-
+color: rgba(0, 0, 0, 0.75);
 }
-
-#navBtn:hover
+#deleteSource:hover
 {
-
-cursor: pointer;
-}
-
-#navTools
-{
-	visibility: hidden;
- opacity: 0;
+    color: red;
 }

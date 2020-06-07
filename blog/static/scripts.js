@@ -1,33 +1,15 @@
-
-function caca()
+// add sources function
+function addElement()
 {
 
-navTools = document.getElementById("navTools")
-navTools.style.visibility = 'visible'
-
-var tl = anime.timeline({
+  var inputdiv = document.getElementById("sourcesInput");
+  var fielddiv = document.getElementById("sourceFields");
+  inputdiv.innerHTML += fielddiv.innerHTML
   
-});
-
-tl
-.add({
-  targets: '#navBtn',
-  translateX: -navTools.offsetWidth - 10 ,
-  rotate: 180,
-  visibility: 'hidden',
-  easing: 'easeInOutExpo'
-
-})
-.add({
-  
-  targets: '#navTools',
-  opacity: 1,
-  easing: 'easeInOutExpo'
-
-});
-
-
 }
+
+
+
 
 
 
@@ -53,7 +35,7 @@ $(window).scroll(function()
 var elementExists = document.getElementById("articlec");
 if (typeof(elementExists) != 'undefined' && elementExists != null)
 {
-  document.body.style.backgroundImage = "none";
+  
 }
 
 // Post page modulation function
@@ -98,6 +80,8 @@ if (window.innerWidth < 1000)
   }
 }
 
+
+
 // Rich text editor for the add page 
 tinymce.init(
 {
@@ -108,6 +92,15 @@ tinymce.init(
   plugins: "image imagetools autosave"
 }
 );
+
+
+
+
+
+
+
+
+
 
 }
 );

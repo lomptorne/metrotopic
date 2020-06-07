@@ -8,25 +8,35 @@
 <!-- Post Header -->
 <div id="mainbloc">
   
-<div class="sticky-top" id="titlea">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
+<div  id="titlea">
+
       <div class="post-heading">
-        <div  class="position-sticky" id="blockhead">
+        <div id="blockhead">
           <h3>{{ Blogpost.title }}</h3>
           <span class="meta">Posted by {{ Blogpost.author }} on {{ Blogpost.date_posted}}</span>
         </div>
       </div>
-    </div>
-  </div>
+
   <hr class="new2">
+  
+  <div id="sources">
+    <h5>Sources :</h5>
+    <ul class="fa-ul">
+    {% for source in Sources %}
+    <li><i class="fa fa-angle-right"></i><a href="{{ source.link }}" target="_blank"> {{ source.title }} </a></li>
+    {% endfor %}
+    </ul>
+  </div>
+  {% if request.user.is_superuser %}
+  <a href="{% url 'sources' Blogpost.id %}"><button class="btn btn-primary">Edit Sources</button></a> 
+  {% endif %}
 </div>
 
 <div  id="titleb">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
       <div class="post-heading">
-        <div  class="position-sticky" id="blockhead">
+        <div id="blockhead">
           <h1>{{ Blogpost.title }}</h1>
           <span class="meta">Posted by {{ Blogpost.author }} on {{ Blogpost.date_posted}}</span>
         </div>
@@ -46,6 +56,8 @@
 </article>
 
 </div>
+
+
 <!-- Scrollbar Script -->
 <script>
 document.getElementById("scrolline").innerHTML = "<div class=\"scroll-line\"></div>";

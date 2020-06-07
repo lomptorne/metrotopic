@@ -7,8 +7,8 @@ from django.contrib.auth import logout as django_logout
 from django.contrib import messages
 
 import datetime
-from .models import Blogpost
 
+from .models import Blogpost, Source
 
 def index(request):
 
@@ -20,16 +20,33 @@ def index(request):
 
 def post(request, Blogpost_id):
 
-    try:
-        post = Blogpost.objects.get(pk=Blogpost_id)
-    except Blogpost.DoesNotExist:
-        raise Http404("This post does not exist")
+    if request.method == "GET":
 
-    context ={
-        "Blogpost" : Blogpost.objects.get(pk=Blogpost_id)
-    }
+        try:
+            post = Blogpost.objects.get(pk=Blogpost_id)
+            
+        except Blogpost.DoesNotExist:
+            raise Http404("This post does not exist")
 
-    return render(request, "blog/post.html", context)
+        context ={
+            "Blogpost" : Blogpost.objects.get(pk=Blogpost_id),
+            "Sources" : Source.objects.filter(blogpost = Blogpost_id)
+        }
+    
+        return render(request, "blog/post.html", context)
+
+    if request.method == "POST":
+
+        if request.POST.get("sourceLink") and request.POST.get("sourceTitle"):
+
+            blogpost = Blogpost.objects.get(pk=Blogpost_id)
+            source = Source()
+            source.link = request.POST.get('sourceLink')
+            source.title = request.POST.get('sourceTitle')
+            source.blogpost = blogpost
+            source.save()
+            
+        return HttpResponseRedirect(request.path_info)
 
 @login_required
 def delete(request, Blogpost_id):
@@ -39,6 +56,38 @@ def delete(request, Blogpost_id):
     return redirect('/')
 
 @login_required
+def deleteSource(request, Blogpost_id, Source_id):
+
+    source = Source.objects.filter(blogpost = Blogpost_id, id = Source_id)
+    source.delete()
+
+    return redirect(sources, Blogpost_id=Blogpost_id)
+
+@login_required
+def sources(request, Blogpost_id):
+
+    context ={
+        "Blogpost" : Blogpost.objects.get(pk=Blogpost_id),
+        "Sources" : Source.objects.filter(blogpost = Blogpost_id)
+    }
+
+    if request.method == "POST":
+
+        if request.POST.get("sourceLink") and request.POST.get("sourceTitle"):
+
+            blogpost = Blogpost.objects.get(pk=Blogpost_id)
+            source = Source()
+            source.link = request.POST.get('sourceLink')
+            source.title = request.POST.get('sourceTitle')
+            source.blogpost = blogpost
+            source.save()
+                
+        return HttpResponseRedirect(request.path_info)
+
+    else:
+
+        return render(request, "blog/sources.html", context)
+
 def edit(request, Blogpost_id):
 
     if request.method == 'POST':
@@ -91,8 +140,16 @@ def add(request):
             blogpost.date_posted= datetime.datetime.now()
             blogpost.save()
 
+            source = Source()
+            source.link = request.POST.get('sourceLink')
+            source.title = request.POST.get('sourceTitle')
+            source.blogpost = blogpost
+            source.save()
+            
             messages.success(request, 'Post added')
-        return redirect('/')
+
+
+            return redirect('/')
 
     else :
 
@@ -104,6 +161,5 @@ def add(request):
         return render(request, "blog/add.html")
 
 def contact(request):
-
 
     return render(request, "blog/contact.html")

@@ -14,3 +14,10 @@ class Blogpost(models.Model):
     def get_absolute_url(self):
         return '/'+str(self.id)
 
+    pass
+
+class Source(models.Model):
+
+    blogpost = models.ForeignKey(Blogpost, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    link = models.CharField(max_length=200)
