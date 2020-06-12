@@ -48,6 +48,9 @@ def post(request, Blogpost_id):
             
         return HttpResponseRedirect(request.path_info)
 
+def tools(request):
+    
+    return render(request, "blog/tools.html")
 @login_required
 def delete(request, Blogpost_id):
     post = Blogpost.objects.get(pk=Blogpost_id)
@@ -88,6 +91,7 @@ def sources(request, Blogpost_id):
 
         return render(request, "blog/sources.html", context)
 
+@login_required
 def edit(request, Blogpost_id):
 
     if request.method == 'POST':

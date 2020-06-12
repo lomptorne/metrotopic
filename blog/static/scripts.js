@@ -1,20 +1,3 @@
-// add sources function
-function addElement()
-{
-
-  var inputdiv = document.getElementById("sourcesInput");
-  var fielddiv = document.getElementById("sourceFields");
-  inputdiv.innerHTML += fielddiv.innerHTML
-  
-}
-
-
-
-
-
-
-
-
 window.addEventListener("DOMContentLoaded", () => {
 
 //Scrollbar function
@@ -29,7 +12,9 @@ $(window).scroll(function()
 }
 );
 
-
+// Determine padding-top depending on the navbar size
+var navHeight = document.getElementById("nav").clientHeight;
+document.getElementById("mainblock").style.paddingTop = navHeight + "px"
 
 // load only on article page 
 var elementExists = document.getElementById("articlec");
@@ -92,10 +77,6 @@ tinymce.init(
   plugins: "image imagetools autosave"
 }
 );
-
-
-
-
 
 
 

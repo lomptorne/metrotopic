@@ -4,7 +4,6 @@ body
 background-color: #E9EBEE;
 max-width: 100%;
 overflow-x: hidden;
-padding-top: 65px;
 }
 
 nav .navbar-brand
@@ -138,14 +137,12 @@ padding-right:  2.5vw;
 /* Post */
 #articlec
 {
-text-align: justify;
 font-family: roboto;
 max-width: 100%;
 width: 70%;
 padding: 2rem;
 background-color: rgb(248, 249, 250, 1);
 border-radius: 2px;
-color: #141823;
 }
 
 #scrolline
@@ -169,7 +166,6 @@ width: 0%;
 #titlea
 {
 position: fixed;
-padding-top: 50px ;
 padding-bottom: 50px ;
 width: 25%;
 height: 100%;
@@ -183,10 +179,10 @@ display: none;
 }
 #titleb
 {
-padding-top : 1rem;
-padding-top: 50px;
+
 width: 100%;
 text-align: center;
+padding-top: 2vh;
 }
 
 #sources

@@ -18,6 +18,7 @@ urlpatterns = [
     path('logout', views.logout, name="logout"),
     path('add', views.add, name="add"),
     path('contact', views.contact, name="contact"),
+    path('tools', views.tools, name="tools"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
 ]
