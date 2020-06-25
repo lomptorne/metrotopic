@@ -1,3 +1,14 @@
+
+function refresher (){
+
+
+setTimeout(function () {
+  
+  location.reload();//reload page
+}, 1000);
+
+}
+
 window.addEventListener("DOMContentLoaded", () => {
 
 //Scrollbar function
