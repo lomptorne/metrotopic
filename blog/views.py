@@ -5,6 +5,14 @@ from django.urls import reverse
 from django.db.models.functions import Trunc
 from django.contrib.auth import logout as django_logout
 from django.contrib import messages
+from django.core.files.storage import FileSystemStorage
+
+from reportlab.lib.enums import TA_CENTER, TA_RIGHT
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import cm
+
+from string import digits
 
 import datetime
 
@@ -51,6 +59,107 @@ def post(request, Blogpost_id):
 def tools(request):
     
     return render(request, "blog/tools.html")
+
+def motivateur(request):
+
+    if request.method == "POST":
+
+        # Set the user inputs vars
+        name = str(request.POST.get('name'))
+        adress = str(request.POST.get('adress'))
+        city = str(request.POST.get('city'))
+        mail = str(request.POST.get('mail'))
+        phone = str(request.POST.get('phone'))
+        job = "Objet: Candidature au poste de \"{}\"".format(str(request.POST.get('job')))
+        diploma = str(request.POST.get('diploma'))
+        school = str(request.POST.get('school'))
+        comp1 = str(request.POST.get('comp1'))
+        comp2 = str(request.POST.get('comp2'))
+        comp3 = str(request.POST.get('comp3'))
+
+        # Set date and place and contact
+
+        remove_digits = str.maketrans('', '', digits)
+        place = city.translate(remove_digits)
+        place = place.strip()
+        today = datetime.date.today()
+        dateplace =  "À " + place + " le " + str(today.day) + "/" + str(today.month) + "/" + str(today.year)
+        contact = "Madame, Monsieur,"
+        end = contact
+
+        # If there is text in the contact field
+        if len(str(request.POST.get('contact'))) != 0 : 
+            contact = "à l'attention de " + str(request.POST.get('contact')) + ","
+            end = str(request.POST.get('contact')) + ","
+
+        # Generate the pdf
+        doc = SimpleDocTemplate("/tmp/somefilename.pdf", rightMargin=2*cm,leftMargin=2*cm,topMargin=2*cm,bottomMargin=2*cm)
+        styles=getSampleStyleSheet()
+        styles.add(ParagraphStyle(name='Right', alignment=TA_RIGHT))
+        styles.add(ParagraphStyle(name='Center', alignment=TA_CENTER))
+        letter = []
+
+        # Write the pdf with differents strings and inputs 
+        ptext = '<font size="12">{}</font>'.format(name)
+        letter.append(Paragraph(ptext, styles["Normal"]))  
+        ptext = '<font size="12">{}</font>'.format(adress)
+        letter.append(Paragraph(ptext, styles["Normal"]))
+        ptext = '<font size="12">{}</font>'.format(city)
+        letter.append(Paragraph(ptext, styles["Normal"]))
+        ptext = '<font size="12">{}</font>'.format(mail)
+        letter.append(Paragraph(ptext, styles["Normal"]))
+        ptext = '<font size="12">{}</font>'.format(phone)
+        letter.append(Paragraph(ptext, styles["Normal"]))  
+        letter.append(Spacer(1, 50))
+        ptext = '<font size="12">{}</font>'.format(dateplace)
+        letter.append(Paragraph(ptext, styles["Right"])) 
+        letter.append(Spacer(1, 80))
+        ptext = '<font size="12">{}</font>'.format(job)
+        letter.append(Paragraph(ptext, styles["Normal"]))  
+        letter.append(Spacer(1, 50))
+        ptext = '<font size="12">{}</font>'.format(contact)
+        letter.append(Paragraph(ptext, styles["Normal"]))  
+        letter.append(Spacer(1, 15))
+        ptext = '<font size="12">Ayant récemment obtenu mon diplôme de {} à {}, je suis désormais à la recherche d\'un emploi.</font>'.format(diploma, school)
+        letter.append(Paragraph(ptext, styles["Normal"]))  
+        letter.append(Spacer(1, 15))
+        ptext = '<font size="12">J\'ai, durant mon cursus scolaire et professionnel, pu acquérir de nombreuses compétences en {} mais aussi en {} ou encore en {}. Ces différentes expériences m\'ont permis d\'obtenir mes premiers savoirs et je pense désormais être en mesure de pouvoir candidater pour le poste que vous proposez aujourd\'hui.</font>'.format(comp1, comp2, comp3)
+        letter.append(Paragraph(ptext, styles["Normal"])) 
+        letter.append(Spacer(1, 15))
+        ptext = '<font size="12">Comme vous avez également pu le remarquer durant la lecture de mon curriculum vitae j\'ai aussi pu développer durant cette période plusieurs compétences annexes  sur mon temps personnel, qui, je pense, peuvent entrer en complémentarité avec les qualités requise pour occuper ce poste.</font>'
+        letter.append(Paragraph(ptext, styles["Normal"]))  
+        letter.append(Spacer(1, 15))
+        ptext = '<font size="12">De plus, je trouve le fait de travailler pour une organisation d-envergure comme la vôtre peut être extrêmement enrichissant tant professionnellement que personnellement.</font>'
+        letter.append(Paragraph(ptext, styles["Normal"]))  
+        letter.append(Spacer(1, 15))
+        ptext = '<font size="12">Appliqué, honnête et sociable, je souhaite occuper ce poste avec tout le sérieux et l\'enthousiasme dont je fais déjà preuve dans la poursuite de mes études. Mes capacités d’adaptation me permettent de m’intégrer très rapidement au sein d’une équipe de travail.</font>'
+        letter.append(Paragraph(ptext, styles["Normal"]))  
+        letter.append(Spacer(1, 15))
+        ptext = '<font size="12">Je reste à votre disposition pour toute information complémentaire, ou pour vous rencontrer lors d’un entretien.</font>'
+        letter.append(Paragraph(ptext, styles["Normal"]))  
+        letter.append(Spacer(1, 15))
+        ptext = '<font size="12">Veuillez agréer, {} l’expression de mes sincères salutations.</font>'.format(end)
+        letter.append(Paragraph(ptext, styles["Normal"]))
+        letter.append(Spacer(1, 30))
+        ptext = '<font size="12">{}</font>'.format(name)
+        letter.append(Paragraph(ptext, styles["Center"]))  
+        
+        # Build the pdf
+        doc.build(letter)
+    
+        fs = FileSystemStorage("/tmp")
+        with fs.open("somefilename.pdf") as pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="Lettre.pdf"'
+            return response
+
+        return response
+
+    else:
+
+        return render(request, "blog/motivateur.html")
+
+
 @login_required
 def delete(request, Blogpost_id):
     post = Blogpost.objects.get(pk=Blogpost_id)
