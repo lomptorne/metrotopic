@@ -150,7 +150,7 @@ def motivateur(request):
         fs = FileSystemStorage("/tmp")
         with fs.open("somefilename.pdf") as pdf:
             response = HttpResponse(pdf, content_type='application/pdf')
-            response['Content-Disposition'] = 'inline; filename="Lettre.pdf"'
+            response['Content-Disposition'] = 'attachment; filename="Lettre.pdf"'
             return response
 
         return response
