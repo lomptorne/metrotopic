@@ -159,7 +159,6 @@ def motivateur(request):
 
         return render(request, "blog/motivateur.html")
 
-
 @login_required
 def delete(request, Blogpost_id):
     post = Blogpost.objects.get(pk=Blogpost_id)
