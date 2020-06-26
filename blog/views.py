@@ -56,10 +56,6 @@ def post(request, Blogpost_id):
             
         return HttpResponseRedirect(request.path_info)
 
-def tools(request):
-    
-    return render(request, "blog/tools.html")
-
 def motivateur(request):
 
     if request.method == "POST":

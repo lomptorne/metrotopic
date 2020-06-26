@@ -57,17 +57,33 @@
         <!-- Navbar elements changer with session -->
         {% if request.user.is_superuser %}
         <ul class="navbar-nav ml-auto mt-2">
-            <li class="nav-item"><a class="nav-link" href="/bc7uwcf">Admin</a></li>
-            <li class="nav-item"><a class="nav-link" href="/add">Add Post</a></li>
-            <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+
+            <li class="nav-item dropdown" >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Tools
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/motivateur">Motivateur</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/bc7uwcf">Admin</a>
+                <a class="dropdown-item" href="/add">Add Post</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/logout">Log Out</a>
+                </div>
+            </li>
         </ul>
 
     {% else %}
         <ul class="navbar-nav ml-auto mt-2">
-             <!-- <li class="nav-item"><a class="nav-link" href="/tools">MetroTools</a></li> -->
-            <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-            <li class="nav-item"><a class="nav-link" href="/motivateur">Motivateur</a></li>
-            
+            <li class="nav-item dropdown" >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Tools
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/motivateur">Motivateur</a>
+                </div>
+            </li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
         </ul>
 
     {% endif %}
