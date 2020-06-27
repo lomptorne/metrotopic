@@ -187,7 +187,7 @@ padding-top: 2vh;
 
 #sources
 {
-    text-align: left;
+text-align: left;
 }
 
 
@@ -294,7 +294,7 @@ color: rgba(0, 0, 0, 0.75);
 }
 #deleteSource:hover
 {
-    color: red;
+color: red;
 }
 
 /* Motivateur */
@@ -308,9 +308,52 @@ transform: translate(-50%);
 }
 #btnMotiv
 {
-    position: absolute;
-    left: 50%;
-    width: 20vh;
-    transform: translate(-50%);
-    margin-bottom: 1em;
+position: absolute;
+left: 50%;
+width: 20vh;
+transform: translate(-50%);
+margin-bottom: 1em;
+}
+
+
+/* Side Panel */
+.sidenav 
+{
+height: 100%; 
+width: 0; 
+position: fixed; 
+z-index: 1; 
+top: 0; 
+left: 0;
+background: white;
+overflow-x: hidden; 
+transition: 0.5s; 
+}
+
+.sidenav a
+{
+padding: 8px 8px 8px 32px;
+font-size: 25px;
+display: block;
+transition: 0.3s;
+}
+
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+
+#closepanel
+{
+position: absolute;
+right: 10px;
+font-size: 25px;
+color: #818181;
+cursor: pointer;
+}
+
+#viewPanel
+{
+color: blue;
+visibility: hidden;
 }

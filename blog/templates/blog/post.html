@@ -43,6 +43,8 @@
       </div>
     </div>
   </div>
+  <span id="viewPanel" onclick="openNav()">View Sources</span>
+
   <hr class="new2">
 </div>
 
@@ -54,6 +56,18 @@
     </div>
   </div>
 </article>
+
+<!-- Side sources for mobile -->
+<div id="mySidenav" class="sidenav">
+  <span id="closepanel" onclick="closeNav()">&times;</span>
+  <h2>Sources: </h2>
+  {% for source in Sources %}
+  <a href="{{ source.link }}" target="_blank">{{ source.title }}</a>
+  {% endfor %}
+  {% if request.user.is_superuser %}
+  <a href="{% url 'sources' Blogpost.id %}"><button class="btn btn-primary" id="sourceBtn">Edit Sources</button></a> 
+  {% endif %}
+</div>
 
 </div>
 

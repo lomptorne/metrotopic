@@ -9,6 +9,15 @@ setTimeout(function () {
 
 }
 
+// Sidebar for mobile
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
 window.addEventListener("DOMContentLoaded", () => {
 
 //Scrollbar function
@@ -26,6 +35,7 @@ $(window).scroll(function()
 // Determine padding-top depending on the navbar size
 var navHeight = document.getElementById("nav").clientHeight;
 document.getElementById("mainblock").style.paddingTop = navHeight + "px"
+
 
 // load only on article page 
 var elementExists = document.getElementById("articlec");
@@ -73,6 +83,8 @@ if (window.innerWidth < 1000)
   if (typeof(elementExists) != 'undefined' && elementExists != null)
   {
     document.getElementById("articlec").style.width = "95%"
+    document.getElementById("viewPanel").style.visibility = "visible"
+    document.getElementById("mySidenav").style.paddingTop = navHeight + "px"
   }
 }
 
