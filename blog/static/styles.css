@@ -36,8 +36,8 @@ overflow-y: hidden;
 
 #logo
 {
-max-width: height:100%;
-max-height: : 100%;
+max-width: 100%;
+max-height: 100%;
 }
 
 
@@ -141,6 +141,7 @@ font-family: roboto;
 max-width: 100%;
 width: 70%;
 padding: 2rem;
+margin-bottom: 20px;
 background-color: rgb(248, 249, 250, 1);
 border-radius: 2px;
 }
@@ -314,7 +315,6 @@ width: 20vh;
 transform: translate(-50%);
 margin-bottom: 1em;
 }
-
 
 /* Side Panel */
 .sidenav 

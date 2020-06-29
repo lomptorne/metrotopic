@@ -125,10 +125,10 @@ def motivateur(request):
         ptext = '<font size="12">Comme vous avez également pu le remarquer durant la lecture de mon curriculum vitae j\'ai aussi pu développer durant cette période plusieurs compétences annexes  sur mon temps personnel, qui, je pense, peuvent entrer en complémentarité avec les qualités requise pour occuper ce poste.</font>'
         letter.append(Paragraph(ptext, styles["Normal"]))  
         letter.append(Spacer(1, 15))
-        ptext = '<font size="12">De plus, je trouve le fait de travailler pour une organisation d-envergure comme la vôtre peut être extrêmement enrichissant tant professionnellement que personnellement.</font>'
+        ptext = '<font size="12">De plus, je trouve le fait de travailler pour une organisation d\'envergure comme la vôtre peut être extrêmement enrichissant tant professionnellement que personnellement.</font>'
         letter.append(Paragraph(ptext, styles["Normal"]))  
         letter.append(Spacer(1, 15))
-        ptext = '<font size="12">Appliqué, honnête et sociable, je souhaite occuper ce poste avec tout le sérieux et l\'enthousiasme dont je fais déjà preuve dans la poursuite de mes études. Mes capacités d’adaptation me permettent de m’intégrer très rapidement au sein d’une équipe de travail.</font>'
+        ptext = '<font size="12">Appliqué, honnête et sociable, je souhaite occuper ce poste avec tout le sérieux et l\'enthousiasme dont dont j\'ai déjà pu faire preuve  durant la poursuite de mes études. De plus, mes capacités d’adaptation me permettent de m’intégrer très rapidement au sein d’une équipe de travail.</font>'
         letter.append(Paragraph(ptext, styles["Normal"]))  
         letter.append(Spacer(1, 15))
         ptext = '<font size="12">Je reste à votre disposition pour toute information complémentaire, ou pour vous rencontrer lors d’un entretien.</font>'
