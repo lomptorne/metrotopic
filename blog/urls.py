@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from . import views
 from .sitemaps import BlogSitemap, fixedMap
