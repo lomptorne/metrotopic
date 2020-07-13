@@ -9,6 +9,7 @@ sitemaps = {
 }
 
 urlpatterns = [
+    path('bc7uwcf/', admin.site.urls),
     path('', views.index, name='index'),
     path("edit/<int:Blogpost_id>", views.edit, name="edit"),
     path("delete/<int:Blogpost_id>", views.delete, name="delete"),
