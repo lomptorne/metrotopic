@@ -58,6 +58,10 @@ def post(request, Blogpost_id):
 
 def motivateur(request):
 
+    return render(request, "blog/motivateur.html")
+
+def generator(request):
+
     if request.method == "POST":
 
         # Set the user inputs vars
@@ -150,7 +154,6 @@ def motivateur(request):
             return response
 
         return response
-
     else:
 
         return render(request, "blog/motivateur.html")
@@ -248,12 +251,6 @@ def add(request):
             blogpost.date_posted= datetime.datetime.now()
             blogpost.save()
 
-            source = Source()
-            source.link = request.POST.get('sourceLink')
-            source.title = request.POST.get('sourceTitle')
-            source.blogpost = blogpost
-            source.save()
-            
             messages.success(request, 'Post added')
 
 
