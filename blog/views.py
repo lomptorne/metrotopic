@@ -26,13 +26,13 @@ def index(request):
 
     return render(request, "blog/index.html", context)
 
-def post(request, Blogpost_id):
+def post(request, Blogpost_title):
 
     if request.method == "GET":
 
         try:
-            post = Blogpost.objects.get(pk=Blogpost_id)
-            
+            post = Blogpost.objects.get(title=Blogpost_title)
+            Blogpost_id = post.pk
         except Blogpost.DoesNotExist:
             raise Http404("This post does not exist")
 
@@ -40,7 +40,7 @@ def post(request, Blogpost_id):
             "Blogpost" : Blogpost.objects.get(pk=Blogpost_id),
             "Sources" : Source.objects.filter(blogpost = Blogpost_id)
         }
-    
+        
         return render(request, "blog/post.html", context)
 
     if request.method == "POST":

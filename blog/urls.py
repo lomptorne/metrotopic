@@ -10,7 +10,7 @@ sitemaps = {
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path("<int:Blogpost_id>", views.post, name="post"),
+    path("<str:Blogpost_title>", views.post, name="post"),
     path("edit/<int:Blogpost_id>", views.edit, name="edit"),
     path("delete/<int:Blogpost_id>", views.delete, name="delete"),
     path("<int:Blogpost_id>/sources/deleteSource/<int:Source_id>", views.deleteSource, name="deleteSource"),
