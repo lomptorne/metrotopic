@@ -10,7 +10,6 @@ sitemaps = {
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path("<str:Blogpost_title>", views.post, name="post"),
     path("edit/<int:Blogpost_id>", views.edit, name="edit"),
     path("delete/<int:Blogpost_id>", views.delete, name="delete"),
     path("<int:Blogpost_id>/sources/deleteSource/<int:Source_id>", views.deleteSource, name="deleteSource"),
@@ -21,5 +20,5 @@ urlpatterns = [
     path('motivateur', views.motivateur, name="motivateur"),
     path('generator', views.generator, name="generator"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-
+    path("<str:Blogpost_title>", views.post, name="post"),
 ]
