@@ -314,6 +314,16 @@ transform: translate(-50%);
 margin-bottom: 1em;
 }
 
+/* Scrambbler */
+
+.center-div
+ {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+ }
+
 /* Side Panel */
 .sidenav 
 {

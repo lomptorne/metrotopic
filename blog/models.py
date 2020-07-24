@@ -21,3 +21,11 @@ class Source(models.Model):
     blogpost = models.ForeignKey(Blogpost, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     link = models.CharField(max_length=200)
+
+class Image(models.Model):
+    name = models.CharField(max_length=200)
+    picture = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+
+        return self.name

@@ -20,3 +20,4 @@ urlpatterns = [
     path('bc7uwcf/', admin.site.urls),
     path('', include('blog.urls')),
 ]
+

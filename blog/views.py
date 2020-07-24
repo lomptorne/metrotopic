@@ -1,22 +1,26 @@
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect, Http404, FileResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.urls import reverse
 from django.db.models.functions import Trunc
 from django.contrib.auth import logout as django_logout
 from django.contrib import messages
-from django.core.files.storage import FileSystemStorage
+from django.core.files.storage import FileSystemStorage, default_storage
 
 from reportlab.lib.enums import TA_CENTER, TA_RIGHT
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import cm
 
+from PIL import Image as imge
+from io import BytesIO
+
 from string import digits
 
 import datetime
 
-from .models import Blogpost, Source
+from .forms import ImageForm
+from .models import Blogpost, Source, Image
 
 def index(request):
 
@@ -157,6 +161,61 @@ def generator(request):
     else:
 
         return render(request, "blog/motivateur.html")
+
+def scrambbler(request):
+
+    if request.method == "POST": 
+        
+        form = ImageForm(request.POST, request.FILES)
+        
+        if form.is_valid() :
+            
+            form.save()
+            
+            img = form.instance.picture
+            name = form.instance.name
+
+            input = imge.open(img)
+            temp = imge.new("RGB", input.size)
+            output = imge.new("RGB", input.size)
+            
+            for x in range(0, input.width, 200):
+                col1 = input.crop((x, 0, x + 100, input.height))
+
+                if (x + 200) <= input.width:
+                    col2 = input.crop((x + 100, 0, x + 200, input.height))
+                    temp.paste(col1, (x + 100, 0))
+                    temp.paste(col2, (x, 0))
+                else:
+                    col2 = input.crop((x + 100, 0, input.width, input.height))
+                    temp.paste(col1, (x, 0))
+                    temp.paste(col2, (x + 100, 0))
+
+            for y in range(0, temp.height, 200):
+
+                row1 = temp.crop((0, y, temp.width, y + 100))
+                
+                if (y + 200) <= temp.height:
+                    row2 = temp.crop((0, y + 100, temp.width, y + 200))
+                    output.paste(row1, (0, y + 100))
+                    output.paste(row2, (0, y))
+                else:
+                    row2 = temp.crop((y + 100, 0, temp.height, temp.width))
+                    row2 = temp.crop((0, y + 100, temp.width, temp.height))
+                    output.paste(row1, (0, y))
+                    output.paste(row2, (0, y + 100))
+
+            buffer = BytesIO()
+            output.save(buffer, format = 'PNG')
+            buffer.seek(0)
+
+            return FileResponse(buffer, as_attachment=True, filename=(name + ".png"))
+
+        return render(request, "blog/scrambbler.html", {'form': form})
+
+    else:
+        form = ImageForm()
+        return render(request, "blog/scrambbler.html", {'form': form})
 
 @login_required
 def delete(request, Blogpost_id):

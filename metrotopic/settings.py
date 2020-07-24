@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'crispy_forms',
 
 ]
 
@@ -126,3 +127,8 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+MEDIA_URL= '/media/'
+MEDIA_ROOT= os.path.join(BASE_DIR, "media/")
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
