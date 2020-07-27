@@ -12,14 +12,16 @@
 {{ form|crispy }}
 <button class="btn btn-primary" type="submit" onclick="" >Upload</button>
 </form>
+
 {% if img_obj %}
 <div id="imgup">
-<img src="{{ img_obj.picture.url}}" alt="connect" style="max-height:200px">
-<p>Link : <a href="{{ img_obj.picture.url }}" target="_blank">{{ img_obj.picture.url }}</a></p>
+<p>Image Uploaded !</p>
+<p style="word-wrap: break-word;">Link : <a href="{{ img_obj.picture.url }}" target="_blank" style="width: 100%;">{{ img_obj.picture.url }}</a></p>
+</div>
+{% endif %}
+
 </div>
 
-{% endif %}
-</div>
 
 
 

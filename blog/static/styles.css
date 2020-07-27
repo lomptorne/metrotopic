@@ -317,21 +317,21 @@ margin-bottom: 1em;
 /* Scrambbler/Uploader */
 
 .center-div
- {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
- }
+{
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
 
 #imgup
 {
-   margin-top: 10px;
+margin-top: 10px;
 border: steelblue;
 border-style: solid;
 border-radius: 2px;
 padding: 10px;
-
+max-width: 200px;
 }
 
 /* Side Panel */
