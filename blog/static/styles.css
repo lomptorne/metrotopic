@@ -314,7 +314,7 @@ transform: translate(-50%);
 margin-bottom: 1em;
 }
 
-/* Scrambbler */
+/* Scrambbler/Uploader */
 
 .center-div
  {
@@ -323,6 +323,16 @@ margin-bottom: 1em;
     top: 50%;
     transform: translate(-50%, -50%);
  }
+
+#imgup
+{
+   margin-top: 10px;
+border: steelblue;
+border-style: solid;
+border-radius: 2px;
+padding: 10px;
+
+}
 
 /* Side Panel */
 .sidenav 

@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Image Upload
+{% endblock %}
+
+{% block main %}
+<div class="center-div">
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form|crispy }}
+<button class="btn btn-primary" type="submit" onclick="" >Upload</button>
+</form>
+{% if img_obj %}
+<div id="imgup">
+<img src="{{ img_obj.picture.url}}" alt="connect" style="max-height:200px">
+<p>Link : <a href="{{ img_obj.picture.url }}" target="_blank">{{ img_obj.picture.url }}</a></p>
+</div>
+
+{% endif %}
+</div>
+
+
+
+{% endblock %}

@@ -218,6 +218,23 @@ def scrambbler(request):
         return render(request, "blog/scrambbler.html", {'form': form})
 
 @login_required
+def imgupload(request):
+
+    if request.method == "POST" :
+        form = ImageForm(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            form.save()
+            img_obj = form.instance
+
+        return render(request, "blog/uploader.html", {'form': form, 'img_obj': img_obj})
+
+    else:
+        form = ImageForm()
+        return render(request, "blog/uploader.html", {'form': form})
+
+@login_required
 def delete(request, Blogpost_id):
     post = Blogpost.objects.get(pk=Blogpost_id)
     post.delete()
