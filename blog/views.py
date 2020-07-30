@@ -7,15 +7,11 @@ from django.contrib.auth import logout as django_logout
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage, default_storage
 
-import os 
-import requests
-
 from reportlab.lib.enums import TA_CENTER, TA_RIGHT
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.platypus import Image as imgpdf
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import cm
-
 
 from PIL import Image as imge
 from io import BytesIO
