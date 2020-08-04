@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%p-)$66)*qp+myk@0caut44bws7ho3w4-u&m!g8ldd0pkp&esa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['147.135.169.177', 'metrotopic.tk', 'www.metrotopic.tk', '127.0.0.1']
 
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'crispy_forms',
+    'django_celery_results',
+    'celery_progress',
 
 ]
 
@@ -132,3 +134,8 @@ MEDIA_URL= '/media/'
 MEDIA_ROOT= os.path.join(BASE_DIR, "media/")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_ACCEPT_CONTENT  = ['json']
+CELERY_TAST_SERIALIZER = 'json'
+CELERY_RESULT_BACKEND = 'django-db'

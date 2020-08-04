@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('bc7uwcf/', admin.site.urls),
     path('', include('blog.urls')),
+    path('celery-progress/', include('celery_progress.urls')),
 ]
 

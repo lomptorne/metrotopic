@@ -20,8 +20,10 @@ from string import digits
 
 import datetime
 
-from .forms import ImageForm
+from .forms import ImageForm, InstaForm
 from .models import Blogpost, Source, Image
+from .tasks import collecteur
+
 
 def index(request):
 
@@ -64,6 +66,26 @@ def post(request, Blogpost_id):
 def motivateur(request):
 
     return render(request, "blog/motivateur.html")
+
+def instascrap(request):
+
+    if request.method == "POST" : 
+
+        form = InstaForm(request.POST)
+
+        if form.is_valid():
+
+            hashtag = str(request.POST.get("Hashtag"))
+            imgNbr = int(request.POST.get("Image_numbers"))
+
+
+            task =  collecteur.delay(hashtag, imgNbr)
+        return render(request, "blog/instascrap.html", {'form': form, 'task_id': task.task_id})
+
+    else:     
+        
+        form = InstaForm()
+        return render(request, "blog/instascrap.html", {'form': form})
 
 def generator(request):
 
