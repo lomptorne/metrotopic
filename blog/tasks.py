@@ -1,6 +1,7 @@
 import requests
 import os
 import shutil
+import json
 from django.http import HttpResponse
 
 from celery import shared_task 
