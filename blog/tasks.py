@@ -1,4 +1,5 @@
-import requests
+import urllib.request as ur
+import json
 import os
 import shutil
 from django.http import HttpResponse
@@ -22,17 +23,15 @@ def collecteur(self, hashtag, imgNbr):
   }
     path = os.getcwd()
     url = "https://www.instagram.com/explore/tags/{}/?__a=1".format(hashtag)
-    page = requests.get(url, headers = headers)
+    data = ur.urlopen(url).read()
+    print(data)
     counter_progress = 0
     progress_recorder = ProgressRecorder(self)
-    print(page)
-    print(hashtag)
-    print(imgNbr)
-    print(page.content)
+    
+
     
     try :
-        jsonDump = page.json()['graphql']['hashtag']['edge_hashtag_to_media']['edges']
-
+        jsonDump = json.loads(data)['graphql']['hashtag']['edge_hashtag_to_media']['edges']
     except :
         raise Exception("No results")
 
