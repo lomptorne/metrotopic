@@ -23,12 +23,11 @@ def collecteur(self, hashtag, imgNbr):
     print(hashtag)
     print(imgNbr)
     print(url)
-    try :
-        jsonDump = page.json()['graphql']['hashtag']['edge_hashtag_to_media']['edges']
 
-    except :
-        raise Exception("No results")
 
+    jsonDump = page.json()['graphql']['hashtag']['edge_hashtag_to_media']['edges']
+
+    print(jsonDump)
 
     # Append the results from the json to a link list
     for node in jsonDump :
