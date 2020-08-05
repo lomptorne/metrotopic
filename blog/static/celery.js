@@ -20,3 +20,23 @@ function reactivate(resultElement, result){
     progressBarMessageElement.innerHTML = "Error : " + excMessage;
 };
 
+
+function dumper(){
+  
+  let url = "https://www.instagram.com/explore/tags/shibainu/?__a=1";
+
+
+  var mydata = [];
+  $.ajax({
+    url: url,
+    async: false,
+    dataType: 'json',
+    success: function (json) {
+      mydata = json;
+    }
+  });
+  dump = mydata.graphql.hashtag.edge_hashtag_to_media.edges
+console.log(dump)
+}
+
+
