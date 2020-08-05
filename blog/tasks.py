@@ -23,7 +23,7 @@ def collecteur(self, hashtag, imgNbr):
     print(hashtag)
     print(imgNbr)
     print(page.content)
-    print(url)
+    print(page.json())
     try :
         jsonDump = page.json()['graphql']['hashtag']['edge_hashtag_to_media']['edges']
 
