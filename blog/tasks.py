@@ -1,7 +1,6 @@
 import requests
 import os
 import shutil
-import json
 from django.http import HttpResponse
 
 from celery import shared_task 
@@ -23,12 +22,13 @@ def collecteur(self, hashtag, imgNbr):
     print(page)
     print(hashtag)
     print(imgNbr)
-    print(url)
+    print(page.content)
+    try :
+        jsonDump = page.json()['graphql']['hashtag']['edge_hashtag_to_media']['edges']
 
+    except :
+        raise Exception("No results")
 
-    jsonDump = requests.get(url).json()['graphql']['hashtag']['edge_hashtag_to_media']['edges']
-
-    print(jsonDump)
 
     # Append the results from the json to a link list
     for node in jsonDump :
