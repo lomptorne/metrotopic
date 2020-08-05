@@ -11,7 +11,9 @@
 <div class="form-group" id="motivateurId" >
   <h1 style="text-align: center; padding-top: 2vh;">Instagram Images Downloader</h1>
 <p id="instapres">A simple tool designed to download images from Instagram based on a hashtag.
-  It will download the latest number of images published on the website based on the hashtag and the number the user enters</p>
+  It will download the latest number of images published on the website based on the hashtag and the number the user enters
+{{task.result}}
+</p>
 <form method="post">
   {% csrf_token %}
   {{ form|crispy }}
@@ -21,7 +23,8 @@
   <div id="progress-bar-message"></div>
   <button class="btn btn-primary" type="submit" onclick="" id="dlbtn">Collect !</button>
 </form>
-<button class="btn btn-success"  onclick=""  id="dlinstbtn">Download <i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+<button class="btn btn-secondary btn-lg"   id="dlinstbtn">Download <i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+<p id0="resultElement" ></p>
 </div>
 
 {% if task_id %}
@@ -30,8 +33,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   var progressUrl = "{% url 'celery_progress:task_status' task_id %}";
   CeleryProgressBar.initProgressBar(progressUrl, {
+    pollInterval : 100,
     onProgress : deactivate,
     onResult : reactivate,
+    onError : errorHandler,
   });  
 });
 </script>

@@ -34,11 +34,11 @@ def collecteur(self, hashtag, imgNbr):
         if counter_progress > imgNbr :
             counter_progress = imgNbr
 
-        progress_recorder.set_progress(counter_progress, imgNbr)
+        progress_recorder.set_progress(counter_progress, imgNbr, "Fetching : ")
         results.append(node['node']['display_url'])
 
     # if there is not enough image in the first page then scroll to more results until it reachs the user input
-    if len(results) <= imgNbr and len(results) > 71:
+    if len(results) <= imgNbr and len(results) > 69:
         
         while len(results) < imgNbr :
 
@@ -52,7 +52,7 @@ def collecteur(self, hashtag, imgNbr):
                 counter_progress += 1
                 if counter_progress > imgNbr :
                     counter_progress = imgNbr
-                progress_recorder.set_progress(counter_progress, imgNbr)
+                progress_recorder.set_progress(counter_progress, imgNbr, "Fetching : ")
                 results.append(node['node']['display_url'])
     counter_progress = 0
 
@@ -74,7 +74,7 @@ def collecteur(self, hashtag, imgNbr):
     for image in results : 
 
         # Set the loop variables and update progressbar
-        progress_recorder.set_progress(counter_progress, imgNbr)
+        progress_recorder.set_progress(counter_progress, imgNbr, "Downloading : ")
         counter_progress += 1
         counter_name = counter_progress
 
@@ -108,8 +108,9 @@ def collecteur(self, hashtag, imgNbr):
         filename = hashtag + "({})".format(str(counter_name)) + ".zip"
 
     filename = filename[:-4]
-
+    progress_recorder.set_progress(imgNbr, imgNbr, "Compressing : ")
     shutil.make_archive( settings.MEDIA_ROOT + '/{}'.format(filename), 'zip',  settings.MEDIA_ROOT + '/{}'.format(hashtag))
     shutil.rmtree(settings.MEDIA_ROOT + '/{}'.format(hashtag), ignore_errors=False, onerror=None)
+    resulte = str(filename + ".zip")
 
-    return "done"
+    return resulte

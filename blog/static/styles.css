@@ -386,8 +386,8 @@ padding-top: 10px;
 #dlbtn
 {
 position: relative;
-margin-bottom: 1em;
-width: 20vh;
+margin-top: 10px;
+margin-bottom: 10px;
 left: 50%;
 transform: translate(-50%);
 }
@@ -395,8 +395,7 @@ transform: translate(-50%);
 #dlinstbtn
 {
 position: relative;
-margin-bottom: 1em;
-width: 20vh;
+margin-bottom: 10px;
 left: 50%;
 transform: translate(-50%);
 }
