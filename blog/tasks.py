@@ -19,6 +19,9 @@ def collecteur(self, hashtag, imgNbr):
     page = requests.get(url)
     counter_progress = 0
     progress_recorder = ProgressRecorder(self)
+    print(page)
+    print(hashtag)
+    print(imgNbr)
 
     try :
         jsonDump = page.json()['graphql']['hashtag']['edge_hashtag_to_media']['edges']
