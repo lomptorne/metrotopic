@@ -19,6 +19,7 @@ from io import BytesIO
 from string import digits
 
 import datetime
+import json
 
 from .forms import ImageForm, InstaForm
 from .models import Blogpost, Source, Image
@@ -70,17 +71,14 @@ def motivateur(request):
 def instascrap(request):
 
     if request.method == "POST" : 
+        
+        data =json.loads(request.body)
+        form = InstaForm()
+        data = data["updated_data"]
+        
+        #task =  collecteur.delay(data)
 
-        form = InstaForm(request.POST)
-
-        if form.is_valid():
-
-            hashtag = str(request.POST.get("Hashtag"))
-            imgNbr = int(request.POST.get("Image_numbers"))
-
-
-            task =  collecteur.delay(hashtag, imgNbr)
-        return render(request, "blog/instascrap.html", {'form': form, 'task_id': task.task_id})
+        return render(request, "blog/instascrap.html", {'form': form})
 
     else:     
         
