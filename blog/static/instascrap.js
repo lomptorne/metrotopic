@@ -9,22 +9,25 @@ function urlToPromise(url) {
         });
     });
 }
-
+window.onerror = function () {
+    location.reload();
+ }
 
 $(document).ready(function() {
-
-
-      $( "#dlbtn" ).click(function() {
-        var urlList = [];
-            
-        
+    var urlList = [];
+    var hashtag;
+    var imgNbr;
+    let url;
+    var mydata;
+    var infinite;
+    
+    $( "#dlbtn" ).click(function() {
         event.preventDefault();
-        var hashtag = document.getElementById("id_Hashtag").value;
-        var imgNbr = parseInt(document.getElementById("id_Image_numbers").value);
-        let url = `https://www.instagram.com/explore/tags/${hashtag}/?__a=1`;
-        var mydata;
-        
-        var infinite;
+        document.getElementById("loader").style.visibility = "visible";
+        document.getElementById("dlbtn").disabled = true;
+        hashtag = document.getElementById("id_Hashtag").value;
+        imgNbr = parseInt(document.getElementById("id_Image_numbers").value);
+        url = `https://www.instagram.com/explore/tags/${hashtag}/?__a=1`;
         setTimeout(function() {
             $.ajax({
                 url: url,
@@ -73,45 +76,40 @@ $(document).ready(function() {
             second()
         }, 10);
         
-    function second () {
-
-
-
-        var zip = new JSZip();
-        filename = hashtag
-        
-        for (var i = 0; i < urlList.length; i++) { 
-            var url = urlList[i];
-            var filename = `${i}.png`;
-            zip.file(filename, urlToPromise(url), {binary:true});
-        }
-        zip.generateAsync({type:"blob"}, function updateCallback(metadata) {
-            var msg = "progression : " + metadata.percent.toFixed(2) + " %";
-            if(metadata.currentFile) {
-                msg += ", current file = " + metadata.currentFile;
-            }
-            showMessage(msg);
-            updatePercent(metadata.percent|0);
-        })
-        .then(function callback(blob) {
-    
-            
-            saveAs(blob, `${hashtag}`);
-    
-            showMessage("done !");
-        }, function (e) {
-            showError(e);
-        });
-    
-        
-/*
-        zip.generateAsync({type:"blob"}).then(function(content) {saveAs(content, `${hashtag}`); });
-*/
-
-
-    }
-
 
 
     });
+
+function second (callback) {
+
+
+    
+    var zip = new JSZip();
+    filename = hashtag
+    
+    for (var i = 0; i < urlList.length; i++) { 
+        var url = urlList[i];
+        var filename = `${i}.png`;
+        zip.file(filename, urlToPromise(url), {binary:true});
+    }
+    zip.generateAsync({type:"blob"}, function updateCallback(metadata) {
+        var msg = "progression : " + metadata.percent.toFixed(2) + " %";
+        if(metadata.currentFile) {
+            msg += ", current file = " + metadata.currentFile;
+        }
+        showMessage(msg);
+        updatePercent(metadata.percent|0);
+    })
+    .then(function callback(blob) {
+        document.getElementById("loader").style.visibility = "hidden";
+        document.getElementById("dlbtn").disabled = false;
+        saveAs(blob, `${hashtag}`);
+
+        showMessage("done !");
+    }, function (e) {
+        showError(e);
+    });
+}
+
 });
+
