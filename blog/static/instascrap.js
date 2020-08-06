@@ -11,7 +11,7 @@ function urlToPromise(url) {
 }
 window.onerror = function () {
     location.reload();
- }
+ } 
 
 $(document).ready(function() {
     var urlList = [];
