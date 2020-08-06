@@ -95,7 +95,7 @@ $(document).ready(function() {
         })
         .then(function callback(blob) {
     
-            // see FileSaver.js
+            
             saveAs(blob, `${hashtag}`);
     
             showMessage("done !");
