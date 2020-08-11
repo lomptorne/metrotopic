@@ -48,7 +48,7 @@ document.getElementById("mainblock").style.paddingTop = navHeight + "px"
 var elementExists = document.getElementById("articlec");
 if (typeof(elementExists) != 'undefined' && elementExists != null)
 {
-  
+
 }
 
 // Post page modulation function
@@ -104,7 +104,8 @@ tinymce.init(
   toolbar: 'undo redo | bold italic underline | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | image | restoredraft ',
   height : "480",
   resize: false,
-  plugins: "image imagetools autosave"
+  plugins: "image imagetools autosave",
+  image_caption: true,
 }
 );
 

@@ -107,7 +107,7 @@ $(document).ready(function() {
 
             // Launch the zip function
             second()
-        }, 10);
+        }, 1000);
         
 
 
