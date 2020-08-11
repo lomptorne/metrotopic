@@ -105,6 +105,7 @@ tinymce.init(
   resize: false,
   plugins: "image imagetools autosave",
   image_caption: true,
+  
 }
 );
 
