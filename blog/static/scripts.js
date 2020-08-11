@@ -48,7 +48,6 @@ document.getElementById("mainblock").style.paddingTop = navHeight + "px"
 var elementExists = document.getElementById("articlec");
 if (typeof(elementExists) != 'undefined' && elementExists != null)
 {
-
 }
 
 // Post page modulation function
