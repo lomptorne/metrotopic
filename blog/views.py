@@ -68,23 +68,6 @@ def motivateur(request):
 
     return render(request, "blog/motivateur.html")
 
-def instascrap(request):
-
-    if request.method == "POST" : 
-        
-        data =json.loads(request.body)
-        form = InstaForm()
-        data = data["updated_data"]
-        
-        #task =  collecteur.delay(data)
-
-        return render(request, "blog/instascrap.html", {'form': form})
-
-    else:     
-        
-        form = InstaForm()
-        return render(request, "blog/instascrap.html", {'form': form})
-
 def generator(request):
 
     if request.method == "POST":
