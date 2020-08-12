@@ -22,7 +22,6 @@ urlpatterns = [
     path('add', views.add, name="add"),
     path('contact', views.contact, name="contact"),
     path('motivateur', views.motivateur, name="motivateur"),
-
     path('generator', views.generator, name="generator"),
     path('scrambbler', views.scrambbler, name="scrambbler"),
     path('imgupload', views.imgupload, name="imgupload"),
