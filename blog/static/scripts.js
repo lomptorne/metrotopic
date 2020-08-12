@@ -27,7 +27,7 @@ function closeNav() {
 
 window.addEventListener("DOMContentLoaded", () => {
 
-//Scrollbar functio
+//Scrollbar function
 $(window).scroll(function()
 {
   var wintop = $(window).scrollTop(), docheight =
