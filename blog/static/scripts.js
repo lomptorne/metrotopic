@@ -43,7 +43,6 @@ $(window).scroll(function()
 var navHeight = document.getElementById("nav").clientHeight;
 document.getElementById("mainblock").style.paddingTop = navHeight + "px"
 
-
 // load only on article page 
 var elementExists = document.getElementById("articlec");
 if (typeof(elementExists) != 'undefined' && elementExists != null)
