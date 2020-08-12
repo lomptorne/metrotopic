@@ -31,11 +31,6 @@ function urlToPromise(url) {
   });
 }
 
-// Error handling
-window.onerror = function (msg, url, line, columnNo, error) {   
-  alert("Sorry, hashtag not found, try again !")
-  location.reload()
-} 
 // Sidebar for mobile
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
