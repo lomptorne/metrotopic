@@ -27,7 +27,7 @@ function closeNav() {
 
 window.addEventListener("DOMContentLoaded", () => {
 
-//Scrollbar function
+//Scrollbar functio
 $(window).scroll(function()
 {
   var wintop = $(window).scrollTop(), docheight =
@@ -108,10 +108,6 @@ tinymce.init(
   
 }
 );
-
-
-
-
 
 }
 );
