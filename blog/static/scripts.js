@@ -39,6 +39,7 @@ $(window).scroll(function()
 }
 );
 
+
 // Determine padding-top depending on the navbar size
 var navHeight = document.getElementById("nav").clientHeight;
 document.getElementById("mainblock").style.paddingTop = navHeight + "px"
