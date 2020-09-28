@@ -85,9 +85,8 @@ def generator(request):
         comp2 = str(request.POST.get('comp2'))
         comp3 = str(request.POST.get('comp3'))
         signature = str(request.POST.get('signature'))
-        signature = imgpdf(signature)
-        signature.drawHeight = 1*cm
-        signature.drawWidth = 4*cm
+
+        signature = name
         
         # Set date and place and contact
         remove_digits = str.maketrans('', '', digits)
@@ -102,7 +101,7 @@ def generator(request):
         if len(str(request.POST.get('contact'))) != 0 : 
             contact = "à l'attention de " + str(request.POST.get('contact')) + ","
             end = str(request.POST.get('contact')) + ","
-        
+
         # Set up the response 
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="Lettre.pdf"'
@@ -149,7 +148,7 @@ def generator(request):
         ptext = '<font size="12">Comme vous avez également pu le remarquer durant la lecture de mon curriculum vitae j\'ai aussi développé durant cette période plusieurs compétences annexes  sur mon temps personnel, qui, je pense, peuvent entrer en complémentarité avec les qualités requises pour occuper ce poste.</font>'
         letter.append(Paragraph(ptext, styles["Normal"]))  
         letter.append(Spacer(1, 15))
-        ptext = '<font size="12">De plus, je trouve le fait de travailler pour une organisation d\'envergure comme la vôtre peut être extrêmement enrichissant tant professionnellement que personnellement.</font>'
+        ptext = '<font size="12">Au demeurant, je trouve le fait de travailler pour une organisation d\'envergure comme la vôtre peut être extrêmement enrichissant tant professionnellement que personnellement.</font>'
         letter.append(Paragraph(ptext, styles["Normal"]))  
         letter.append(Spacer(1, 15))
         ptext = '<font size="12">Appliqué, honnête et sociable, je souhaite occuper ce poste avec tout le sérieux et l\'enthousiasme dont dont j\'ai déjà pu faire preuve  durant la poursuite de mes études. De plus, mes capacités d’adaptation me permettent de m’intégrer très rapidement au sein d’une équipe de travail.</font>'
@@ -164,7 +163,6 @@ def generator(request):
         ptext = '<font size="12">{}</font>'.format(name)
         letter.append(Paragraph(ptext, styles["Center"]))  
         letter.append(Spacer(1, 15))
-        letter.append(signature)
         
         # Build the pdf
         doc.build(letter)
@@ -232,6 +230,9 @@ def scrambbler(request):
         form = ImageForm()
         return render(request, "blog/scrambbler.html", {'form': form})
 
+def instascrap(request):
+    form = InstaForm()
+    return render(request, "blog/instascrap.html", {'form': form})
 @login_required
 def imgupload(request):
 

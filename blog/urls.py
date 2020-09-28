@@ -23,6 +23,7 @@ urlpatterns = [
     path('contact', views.contact, name="contact"),
     path('motivateur', views.motivateur, name="motivateur"),
     path('generator', views.generator, name="generator"),
+    path('instascrap', views.instascrap, name="instascrap"),
     path('scrambbler', views.scrambbler, name="scrambbler"),
     path('imgupload', views.imgupload, name="imgupload"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
