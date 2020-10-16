@@ -22,7 +22,7 @@ Index
 
   <!-- Edit and Delete button if the session is on -->
 
-<div id="tileprev" class="box">
+<div class="tileprev" class="box">
 
 {% if request.user.is_superuser %}
 <form  class="controls"  action="{% url 'delete' Blogpost.id %}" id="deleteForm" onsubmit="return confirm('Do you really want to delete this post ?');">

@@ -14,7 +14,7 @@
   It will download the latest number of images published on the website based on the hashtag and the number the user enters
 
 </p>
-<form method="post">
+<form method="post" onsubmit="instascrap()">
   {% csrf_token %}
   {{ form|crispy }}
   
@@ -22,7 +22,7 @@
     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
 </div>
   
-  <button class="btn btn-primary" type="button" id="dlbtn">Collect !</button>
+  <button class="btn btn-primary" type="submit" id="dlbtn">Collect !</button>
   
 </form>
 <div id="loader"></div>
