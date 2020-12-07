@@ -318,15 +318,14 @@ position: absolute;
 width: 80%;
 left: 50%;
 transform: translate(-50%);
+padding-bottom: 10px;
 }
 #btnMotiv
 {
-position: absolute;
-width: 20vh;
-margin-bottom: 1em;
-left: 50%;
-
-transform: translate(-50%);
+margin:0 auto;
+width: 200px;
+text-align: center;
+display:block;
 }
 
 /* Scrambbler/Uploader */
