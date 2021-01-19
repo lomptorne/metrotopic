@@ -6,7 +6,10 @@
 {% endblock %}
 
 {% block main %}
-<div class="center-div">
+<div class="form-group" id="motivateurId" >
+  <h1 style="text-align: center; padding-top: 2vh;">Image Scrambler</h1>
+  <p id="instapres">A simple tool designed to Scrammble images, based on Japscan.se encryption of mangas pages. 
+  </p>
 <form method="post" enctype="multipart/form-data">
 {% csrf_token %}
 
